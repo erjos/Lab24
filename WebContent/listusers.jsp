@@ -48,7 +48,8 @@ try {
     		String username = rs.getString(1);
     		String email = rs.getString(2);
     		String fullname = rs.getString(3);
-    		out.println("<td>"+ username + "</td><td>" + email + "</td><td> " + fullname + "</td><td> ");
+    		out.println("<td>"+ username + "</td><td>" + email + "</td><td> " + fullname + "</td><td><form name = 'deleteuser' action = 'deleteuser.jsp' align='center'> <input type='hidden' name = 'username' value = \""+ username +"\"> <input type='submit' value = 'Delete User'> </form></td> ");
+			out.println("<td> <form name = 'modifyuser' action = 'modifyuserform.jsp' align='center'> <input type='hidden' name = 'username' value = \""+ username +"\"> <input type='submit' value = 'Modify User'> </form></td>" );    
     }
     out.println("</table>");
     
