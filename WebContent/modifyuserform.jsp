@@ -12,7 +12,8 @@
 Connection con = null;
 Statement st = null;
 ResultSet rs = null;
-User modify = null;
+String email = "";
+String fullname = "";
 
 String username = request.getParameter("username");
 
@@ -32,12 +33,14 @@ try {
     PreparedStatement insertStatement = con.prepareStatement(query);
 
     insertStatement.setString(1, username);
+    
     rs= insertStatement.executeQuery();
     
-	String email = rs.getString(2);
-	String fullname = rs.getString(3);
+    rs.next();//advance to the first record
+	email = rs.getString(1);
+	fullname = rs.getString(2);
 	
-	modify = new User(username, email, fullname);
+	
     		
 } catch (SQLException e) {
     out.println("DB Exception: " + e);
@@ -59,10 +62,11 @@ try {
     }
 }
 %>
+
 <form name="user" action = "adduser.jsp" method = "post">
-Username<input name= "username" type="text" value= "<% modify.getUsername();%>" ><br>
-Email<input name="email" type="email"><br>
-Full Name<input name="full_name" type= "text"><br>
+Username<input name= "username" type="text" value= "<%= username %>" ><br>
+Email<input name="email" type="email" value= "<%= email %>"><br>
+Full Name<input name="full_name" type= "text" value= "<%= fullname %>"><br>
 <button type="submit">Submit</button> 
 </form>
 </body>
