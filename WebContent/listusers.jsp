@@ -51,7 +51,7 @@ try {
     		out.println("<td>"+ username + "</td><td>" + email + "</td><td> " + fullname + "</td><td><form name = 'deleteuser' action = 'deleteuser.jsp' align='center'> <input type='hidden' name = 'username' value = \""+ username +"\"> <input type='submit' value = 'Delete User'> </form></td> ");
 			out.println("<td> <form name = 'modifyuser' action = 'modifyuserform.jsp' align='center'> <input type='hidden' name = 'username' value = \""+ username +"\"> <input type='submit' value = 'Modify User'> </form></td>" );    
     }
-    out.println("</table>");
+    out.println("</table><br><form method = 'link' action = 'index.html' align = 'center'> <input type = submit value = 'HOME'></form>");
     
     		
 } catch (SQLException e) {

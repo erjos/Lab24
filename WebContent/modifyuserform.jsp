@@ -28,7 +28,7 @@ try {
     st = con.createStatement();
     
     //create query statement - use ? to the values so that it can call the perpared statement
-    String query = "SELECT username, email, full_name FROM Users WHERE username = ?";
+    String query = "SELECT email, full_name FROM Users WHERE username = ?";
     
     PreparedStatement insertStatement = con.prepareStatement(query);
 
@@ -63,10 +63,11 @@ try {
 }
 %>
 
-<form name="user" action = "adduser.jsp" method = "post">
+<form name="modifyuser" action = "modifyuser.jsp" method = "post">
 Username<input name= "username" type="text" value= "<%= username %>" ><br>
 Email<input name="email" type="email" value= "<%= email %>"><br>
 Full Name<input name="full_name" type= "text" value= "<%= fullname %>"><br>
+<input type ="hidden" name="useroriginal" value = "<%= username %>">
 <button type="submit">Submit</button> 
 </form>
 </body>

@@ -10,7 +10,8 @@
 <%
 Connection con = null;
 Statement st = null;
-ResultSet rs = null;
+int rs = 0;
+ResultSet rss = null;
 
 String username = request.getParameter("username");
 String passwd = request.getParameter("password");
@@ -38,14 +39,21 @@ try {
     insertStatement.setString(3, email);
     insertStatement.setString(4, fullname);
     insertStatement.executeUpdate();
+    
+    if(rs == 0)
+    {
+       out.println("Success");
+       String redirectURL = "http://localhost:8080/Lab24/index.html";
+       response.sendRedirect(redirectURL);
+    }
     		
 } catch (SQLException e) {
     out.println("DB Exception: " + e);
 
 } finally {
     try {
-        if (rs != null) {
-            rs.close();
+        if (rss != null) {
+            rss.close();
         }
         if (st != null) {
             st.close();
@@ -59,6 +67,5 @@ try {
     }
 }
 %>
-<h1>SUCCESS</h1>
 </body>
 </html>
