@@ -26,12 +26,9 @@ try {
     PreparedStatement insertStatement = con.prepareStatement(query);
     
     rs = st.executeQuery(query);
-    
-    
-  	//rs = st.executeQuery();
 	
     out.println("<table align='center'>");
-    //while there's still another result
+    
     boolean grey = false;
     while (rs.next()) {
     	if(grey)
@@ -39,12 +36,7 @@ try {
     	else
     		out.println("<tr bgcolor=#FFFFFF>");
     	grey = !grey; 
-    	// flip it everytime
-    	//basically it sets grey false - when grey is false it prints the row in black
-    	//when it is true it prints it as grey - every loop it flips the boolean so that it alternates
-    	//what are the numbers in here? How does it know
     			
-    			//declare new variables and get the type as the "rs"
     		String username = rs.getString(1);
     		String email = rs.getString(2);
     		String fullname = rs.getString(3);
